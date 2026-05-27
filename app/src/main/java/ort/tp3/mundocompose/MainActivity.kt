@@ -26,10 +26,16 @@ fun MainApp() {
 
     when (currentScreen) {
         "welcome" -> WelcomeScreen(
-            onLoginClick = { currentScreen = "login" }
+            onLoginClick = { currentScreen = "login" },
+            onRegisterClick = { currentScreen = "register" }
         )
         "login" -> LoginScreen(
-            onBackClick = { currentScreen = "welcome" }
+            onBackClick = { currentScreen = "welcome" },
+            onCreateAccountClick = { currentScreen = "register" }
+        )
+        "register" -> RegisterScreen(
+            onBackClick = { currentScreen = "welcome" },
+            onLoginClick = { currentScreen = "login" }
         )
     }
 }

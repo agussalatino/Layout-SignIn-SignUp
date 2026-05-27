@@ -1,7 +1,6 @@
 package ort.tp3.mundocompose
 
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
@@ -23,10 +22,13 @@ import androidx.compose.ui.unit.sp
 import ort.tp3.mundocompose.ui.theme.HolaMundoComposeTheme
 
 @Composable
-fun WelcomeScreen(onLoginClick: () -> Unit = {}) {
+fun WelcomeScreen(
+    onLoginClick: () -> Unit = {},
+    onRegisterClick: () -> Unit = {}
+) {
     Surface(
         modifier = Modifier.fillMaxSize(),
-        color = Color(0xFFF8F9FF) // Light background color as seen in the image
+        color = Color(0xFFF8F9FF)
     ) {
         Column(
             modifier = Modifier
@@ -42,16 +44,12 @@ fun WelcomeScreen(onLoginClick: () -> Unit = {}) {
                     .weight(1f),
                 contentAlignment = Alignment.Center
             ) {
-                // Usando la imagen JPG que tienes en drawables
                 Image(
                     painter = painterResource(id = R.drawable.welcome_image),
                     contentDescription = "Welcome Illustration",
                     modifier = Modifier.fillMaxSize(),
                     contentScale = ContentScale.Fit
                 )
-                
-                // If you have the image from the screenshot, you can use it like this:
-                // Image(painter = painterResource(id = R.drawable.working_person), ...)
             }
 
             // Middle Section: Text
@@ -106,7 +104,7 @@ fun WelcomeScreen(onLoginClick: () -> Unit = {}) {
                 }
 
                 TextButton(
-                    onClick = { /* TODO: Register Action */ },
+                    onClick = onRegisterClick,
                     modifier = Modifier
                         .weight(1f)
                         .height(60.dp),

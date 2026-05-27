@@ -21,12 +21,13 @@ import ort.tp3.mundocompose.ui.theme.HolaMundoComposeTheme
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun LoginScreen(
+fun RegisterScreen(
     onBackClick: () -> Unit = {},
-    onCreateAccountClick: () -> Unit = {}
+    onLoginClick: () -> Unit = {}
 ) {
     var email by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
+    var confirmPassword by remember { mutableStateOf("") }
 
     Surface(
         modifier = Modifier.fillMaxSize(),
@@ -44,29 +45,30 @@ fun LoginScreen(
                 }
             }
 
-            Spacer(modifier = Modifier.height(40.dp))
+            Spacer(modifier = Modifier.height(30.dp))
 
             // Title
             Text(
-                text = "Login here",
+                text = "Create Account",
                 color = Color(0xFF1F41BB),
                 fontSize = 30.sp,
                 fontWeight = FontWeight.Bold
             )
 
-            Spacer(modifier = Modifier.height(20.dp))
+            Spacer(modifier = Modifier.height(10.dp))
 
             // Subtitle
             Text(
-                text = "Welcome back you've\nbeen missed!",
+                text = "Create an account so you can explore all the existing jobs",
                 color = Color.Black,
-                fontSize = 20.sp,
-                fontWeight = FontWeight.Bold,
+                fontSize = 14.sp,
+                fontWeight = FontWeight.Medium,
                 textAlign = TextAlign.Center,
-                lineHeight = 28.sp
+                lineHeight = 22.sp,
+                modifier = Modifier.padding(horizontal = 20.dp)
             )
 
-            Spacer(modifier = Modifier.height(60.dp))
+            Spacer(modifier = Modifier.height(50.dp))
 
             // Email Field
             OutlinedTextField(
@@ -108,20 +110,30 @@ fun LoginScreen(
 
             Spacer(modifier = Modifier.height(20.dp))
 
-            // Forgot Password
-            Text(
-                text = "Forgot your password?",
-                color = Color(0xFF1F41BB),
-                fontSize = 14.sp,
-                fontWeight = FontWeight.SemiBold,
-                modifier = Modifier.align(Alignment.End)
+            // Confirm Password Field
+            OutlinedTextField(
+                value = confirmPassword,
+                onValueChange = { confirmPassword = it },
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(64.dp),
+                placeholder = { Text("Confirm Password", color = Color.Gray) },
+                shape = RoundedCornerShape(10.dp),
+                visualTransformation = PasswordVisualTransformation(),
+                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
+                colors = OutlinedTextFieldDefaults.colors(
+                    focusedContainerColor = Color(0xFFF1F4FF),
+                    unfocusedContainerColor = Color(0xFFF1F4FF),
+                    focusedBorderColor = Color(0xFF1F41BB),
+                    unfocusedBorderColor = Color.Transparent,
+                )
             )
 
-            Spacer(modifier = Modifier.height(30.dp))
+            Spacer(modifier = Modifier.height(50.dp))
 
-            // Sign In Button
+            // Sign Up Button
             Button(
-                onClick = { /* TODO: Sign In */ },
+                onClick = { /* TODO: Sign Up */ },
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(60.dp),
@@ -130,26 +142,26 @@ fun LoginScreen(
                 elevation = ButtonDefaults.buttonElevation(defaultElevation = 8.dp)
             ) {
                 Text(
-                    text = "Sign in",
+                    text = "Sign up",
                     color = Color.White,
                     fontSize = 20.sp,
                     fontWeight = FontWeight.SemiBold
                 )
             }
 
-            Spacer(modifier = Modifier.height(30.dp))
+            Spacer(modifier = Modifier.height(20.dp))
 
-            // Create new account
-            TextButton(onClick = onCreateAccountClick) {
+            // Already have an account
+            TextButton(onClick = onLoginClick) {
                 Text(
-                    text = "Create new account",
+                    text = "Already have an account",
                     color = Color(0xFF494949),
                     fontSize = 14.sp,
                     fontWeight = FontWeight.SemiBold
                 )
             }
 
-            Spacer(modifier = Modifier.height(50.dp))
+            Spacer(modifier = Modifier.height(30.dp))
 
             // Social Login Section
             Text(
@@ -174,8 +186,8 @@ fun LoginScreen(
 
 @Preview(showBackground = true)
 @Composable
-fun LoginScreenPreview() {
+fun RegisterScreenPreview() {
     HolaMundoComposeTheme {
-        LoginScreen()
+        RegisterScreen()
     }
 }
