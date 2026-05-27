@@ -1,28 +1,23 @@
+# Archivos de compilación y temporales de Android
 *.iml
-.gradle
-/local.properties
-/.idea/caches
-/.idea/libraries
-/.idea/modules.xml
-/.idea/workspace.xml
-/.idea/navEditor.xml
-/.idea/assetWizardSettings.xml
-.DS_Store
-/build
-/captures
-.externalNativeBuild
-.cxx
 .gradle/
-build/
-local.properties
-*.log
-captures/
+/local.properties
+/.idea/
+/build/
+/captures/
 .externalNativeBuild/
 .cxx/
+*.log
+
+# Artefactos de salida
 *.aab
 *.apk
 output-metadata.json
-.idea/
+
+# Archivos del sistema
+.DS_Store
+
+# Archivos específicos de Android Studio que no deben versionarse
 misc.xml
 deploymentTargetDropDown.xml
 render.experimental.xml
